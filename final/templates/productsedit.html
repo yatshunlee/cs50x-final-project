@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Products
+{% endblock %}
+
+{% block main %}
+    <script>
+        function update(value){
+            document.getElementById("productid").value = value;
+        }
+    </script>
+     <form action="/productsEdit" method="post">
+         {% if edited %}
+         {{edited}}
+         <strong>Edited!</strong>
+         {% elif deleted %}
+         <strong>Will soon be available!</strong>
+         {% elif error %}
+         <strong>Error: Need to input price value!</strong>
+         {% endif %}
+         <br>
+        <!--displaying products-->
+        <div class="container">
+            <h2>2020 Winter Collection</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="product-top">
+                        <img src="static/products/1.jpg">
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>{{names[0]}}</h3>
+                        <div class="form-group">
+                            <input autocomplete="off" autofocus class="form-control" name="price1" placeholder="price" value={{prices[0]}} type="text">
+                        </div>
+                        <button class="btn btn-primary" name="edit" value="1" type="submit">Edit</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-top">
+                        <img src="static/products/2.jpg">
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>{{names[1]}}</h3>
+                        <div class="form-group">
+                            <input autocomplete="off" autofocus class="form-control" name="price2" placeholder="price" value={{prices[1]}} type="text">
+                        </div>
+                        <button class="btn btn-primary" name="edit" value="2" type="submit">Edit</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-top">
+                        <img src="static/products/3.jpg">
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>{{names[2]}}</h3>
+                        <div class="form-group">
+                            <input autocomplete="off" autofocus class="form-control" name="price3" placeholder="price" value={{prices[2]}} type="text">
+                        </div>
+                        <button class="btn btn-primary" name="edit" value="3" type="submit">Edit</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-top">
+                        <img src="static/products/4.jpg">
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>{{names[3]}}</h3>
+                        <div class="form-group">
+                            <input autocomplete="off" autofocus class="form-control" name="price4" placeholder="price" value={{prices[3]}} type="text">
+                        </div>
+                        <button class="btn btn-primary" name="edit" value="4" type="submit">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

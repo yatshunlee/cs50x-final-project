@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Orders
+{% endblock %}
+
+{% block main %}
+    <form action="/wish" method="post">
+        {% if msg %}
+            <p><strong>{{ msg }}</strong>
+        {% endif %}
+
+    <script>
+        function increase(){
+            var a = 1;
+            var textBox = document.getElementById("count");
+            textBox.value++;
+
+        }
+        function decrease(){
+            var textBox = document.getElementById("count");
+            textBox.value--;
+        }
+    </script>
+    <table class="table">
+        <tr style="font-weight: bold;">
+            <td>Product</td> <td>Price</td> <td>Size</td> <td>Quantity</td> <td>Add to Cart</td> <td>Remove</td>
+        </tr>
+        {% for row in rows %}
+            <tr>
+                <td>
+                    <div class="product-top">
+                        <img src="{{row["img"]}}" width="80" height="80">
+                    </div>
+                    <div class="product-bottom text-center">
+                        {{row['name']}}
+                    </div>
+                </td>
+                <td>{{row['price']}}</td>
+                <td>
+                    <div>
+                            <select autofocus class="form-control" name="size" style="width: 100%;">
+                                <option value="NA">Select size</option>
+                                <option value="s">S</option>
+                                <option value="m">M</option>
+                                <option value="l">L</option>
+                            </select>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <button type="button" onclick="decrease()">-</button>
+                        <input type="text" id="count" name="count" value="0" style="width: 10%;">
+                        <button type="button" onclick="increase()">+</button>
+                    </div>
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-secondary" name="cart" value="{{row["id"]}}" title="cart"><i class="fa fa-shopping-cart"></i></button>
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-secondary" name="remove" value="{{row["id"]}}" title="remove"><i class="fa fa-trash"></i></button>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    </form>
+{% endblock %}

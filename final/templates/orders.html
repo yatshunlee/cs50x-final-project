@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Orders
+{% endblock %}
+
+{% block main %}
+    <form action="/orders" method="post">
+    <table class="table table-striped">
+        <tr>
+            <td>Date</td> <td>Invoice No. and Details</td> <td>Firstname</td> <td>Surname</td> <td>Contact</td> <td>Price</td> <td>Payment Method</td> <td>Status</td>
+        </tr>
+        {% for row in rows %}
+        <tr>
+            <td>{{row['invoice_date']}}</td>
+            <td>
+                <button type="submit" class="btn btn-secondary" name="invoice_id" title="more" value="{{row["invoice_id"]}}">{{row['invoice_id']}}</button>
+            </td>
+            <td>{{row['firstname']}}</td>
+            <td>{{row['surname']}}</td>
+            <td>{{row['contact']}}</td>
+            <td>{{row['total']}}</td>
+            <td>{{row['pm']}}</td>
+            <td>
+                {% if row['status'] != "Checking" %}
+                    {{row['status']}}
+                {% else %}
+                    <button type="submit" class="btn btn-secondary" name="delivered" value="{{row["invoice_id"]}}">Delivered</button>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    </form>
+{% endblock %}

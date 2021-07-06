@@ -1,0 +1,139 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Products
+{% endblock %}
+
+{% block main %}
+    <script>
+        function increase(){
+            var a = 1;
+            var textBox = document.getElementById("count");
+            textBox.value++;
+
+        }
+        function decrease(){
+            var textBox = document.getElementById("count");
+            textBox.value--;
+        }
+    </script>
+
+    <script>
+        function updateCart(value){
+            document.getElementById("productid").value = value;
+        }
+        function updateLike(value){
+            document.getElementById("productid").value = value;
+        }
+    </script>
+
+     <form action="/products" method="post">
+        {% if error %}
+            <p class=error><strong>{{error}}</strong>
+        {% elif added %}
+            <p class=error><strong>Added to {{added}}!</strong>
+        {% endif %}
+
+        <!--displaying products-->
+        <div class="container">
+            <h2>2020 Winter Collection</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="product-top">
+                    <img src="static/products/1.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" onclick="updateCart(this.value)" value="1" title="add to cart" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-shopping-cart"></i></button>
+                            <button type="submit" class="btn btn-secondary" name="like" value="1" title="like"><i class="fa fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>{{names[0]}}</h3>
+                        <h5>${{prices[0]}}</h5>
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <div class="product-top">
+                    <img src="static/products/2.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" onclick="updateCart(this.value)" value="2" title="add to cart" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-shopping-cart"></i></button>
+                            <button type="submit" class="btn btn-secondary" name="like" value="2" title="like"><i class="fa fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>{{names[1]}}</h3>
+                        <h5>${{prices[1]}}</h5>
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <div class="product-top">
+                    <img src="static/products/3.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" onclick="updateCart(this.value)" value="3" title="add to cart" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-shopping-cart"></i></button>
+                            <button type="submit" class="btn btn-secondary" name="like" value="3" title="like"><i class="fa fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>{{names[2]}}</h3>
+                        <h5>${{prices[2]}}</h5>
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <div class="product-top">
+                    <img src="static/products/4.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" onclick="updateCart(this.value)" value="4" title="add to cart" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-shopping-cart"></i></button>
+                            <button type="submit" class="btn btn-secondary" name="like" value="4" title="like"><i class="fa fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>{{names[3]}}</h3>
+                        <h5>${{prices[3]}}</h5>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Choosing the size and quantity</h5>
+
+                        <!--cross, "x", symbol on the top right corner of the pop-up modal-->
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <!--<p id="demo"></p>-->
+                        <input type="hidden" value="0" id="productid" name="productid">
+                        <div class="form-group">
+                            <select autofocus class="form-control" name="size" style="width: 100%;">
+                                <option value="NA">Select size</option>
+                                <option value="s">S</option>
+                                <option value="m">M</option>
+                                <option value="l">L</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" onclick="decrease()">-</button>
+                            <input type="text" id="count" name="count" value="0" style="width: 10%;">
+                            <button type="button" onclick="increase()">+</button>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-secondary" name="return" value="return">Return</button>
+                        <button type="submit" class="btn btn-primary" name="add" value="add">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

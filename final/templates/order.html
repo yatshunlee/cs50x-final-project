@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Order
+{% endblock %}
+
+{% block main %}
+    <form action="/orders" method="post">
+    <h1>Invoice No. #{{invoice["invoice_id"]}}</h1>
+        <br><br>
+    <table class="table table-striped">
+        <tr>
+            <th>Delivery Method</th> <th>Address</th>
+        </tr>
+
+        <tr>
+            <td>{{invoice["dm"]}}</td> <td>{{invoice["address"]}}</td>
+        </tr>
+    </table>
+    <br><br>
+    <table class="table table-striped">
+        <tr>
+            <th>Product Name</th> <th>Product Size</th> <th>Quantity</th>
+        </tr>
+        {% for product in cart %}
+        <tr>
+            <td>{{product['name']}}</td>
+            <td>{{product['product_size']}}</td>
+            <td>{{product['count']}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </form>
+{% endblock %}

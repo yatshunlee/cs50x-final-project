@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Historys
+{% endblock %}
+
+{% block main %}
+    <form action="/history" method="post">
+    <table class="table table-striped">
+        <tr>
+            <td>Date</td> <td>Invoice No. and Details</td> <td>Price</td> <td>Payment Method</td> <td>Status</td>
+        </tr>
+        {% for row in rows %}
+        <tr>
+            <td>{{row['invoice_date']}}</td>
+            <td>
+                <button type="submit" class="btn btn-secondary" name="invoice_id" title="more" value="{{row["invoice_id"]}}">{{row['invoice_id']}}</button>
+            </td>
+            <td>{{row['total']}}</td>
+            <td>{{row['pm']}}</td>
+            <td>{{row['status']}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </form>
+{% endblock %}

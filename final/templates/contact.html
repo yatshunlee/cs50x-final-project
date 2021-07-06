@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Contact Us
+{% endblock %}
+
+{% block main %}
+    <h1>Contact Us</h1>
+    <br>
+    {% if error %}
+            <p class=error><strong>Error:{{error}}</strong>
+    {% endif %}
+    <div class="row">
+        <div class="column" style="text-align: left; width: 60%;">
+        <h5>About us</h5>
+        <img alt="woof-woof" class="border" src="/static/coffee.ico" title="coffee"><br>
+        <p>This is our dog, <b>Coffee</b>. <i>Woof!</i><br>
+        CoLenball is a HK clothes store founded by a local couple owning 2 dogs, Coffee and BallJai.
+        We love stylish clothes and dogs! <b>Remember to support your local!!:)</b></p>
+        <p>Life is too short to wear boring clothes. Check it out!!</p>
+        </div>
+
+        <div class="column" style="width: 40%;">
+        <form action="/contact" method="post">
+            <div class="form-group">
+                <label for="firstname"><h5>Leave us a message. We'll reply you ASAP!!</h5></label><br>
+                <input autocomplete="off" autofocus class="form-control" name="email" placeholder="email" type="email" style="width: 100%;">
+            </div>
+            <div class="form-group">
+                <textarea autocomplete="off" autofocus class="form-control" placeholder="your message:)" name="message" rows="10" cols="30" style="width: 100%;"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+        </div>
+
+    </div>
+    <hr style="border-top: 1px solid red;">
+    <h5>Follow Us</h5>
+    <div class="row">
+        <br>
+        <div class="column" style="text-align: left; width: 33%;">Twitter: colenballhk</div>
+        <div class="column" style="text-align: center; width: 33%;">Instagram: colenballhk</div>
+        <div class="column" style="text-align: right; width: 33%;">Facebook: colenballhk</div>
+    </div>
+{% endblock %}

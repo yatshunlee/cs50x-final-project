@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block main %}
+    <script type="text/javascript">
+        var links = ["/products","/products","/contact"]
+        var images = ["static/christmas.jpg","static/black5.jpg","static/coffee.jpg"]
+        var i = 1;
+
+        function renew(){
+            if(links.length == i){
+                i = 0;
+            }
+            else {
+            document.getElementById("bannerImage").src = images[i];
+            document.getElementById("bannerLink").href = links[i];
+            i++;
+            }
+        }
+
+        window.onload = function timer(){
+            setInterval(renew,2000);
+        }
+    </script>
+    <a id="bannerLink" href="/products" target="_self" onclick="void window.open(this.href,'_self'); return false;">
+    <img id="bannerImage" src="static/christmas.jpg" width="1200" height="732">
+    </a>
+    <hr>
+    <div class="container">
+            <h2>New Arrival 🔥 🔥 🔥</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="product-top">
+                        <a href="/products" target="_self" onclick="void window.open(this.href,'_self'); return false;">
+                        <img src="static/products/1.jpg">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-top">
+                        <a href="/products" target="_self" onclick="void window.open(this.href,'_self'); return false;">
+                        <img src="static/products/1.jpg">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-top">
+                        <a href="/products" target="_self" onclick="void window.open(this.href,'_self'); return false;">
+                        <img src="static/products/1.jpg">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-top">
+                        <a href="/products" target="_self" onclick="void window.open(this.href,'_self'); return false;">
+                        <img src="static/products/1.jpg">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Shopping Cart
+{% endblock %}
+
+{% block main %}
+
+    {% if error %}
+        <p class=error><strong>{{ error }}</strong>
+    {% endif %}
+    <!--displaying each product photo + price + quantity, total-->
+    <form action="/cart" method="post">
+        <div class="cart-header text-center"><h1>Your Basket</h1><br></div>
+        <div class="row">
+            <div class="column" style="text-align: left; width: 60%;">
+                <!--Calculating total price of all products in cart-->
+                <table class="table" style="width: 85%;">
+                    <tr style="font-weight: bold;">
+                        <td>Product</td> <td>Size</td> <td>Quantity</td> <td>Price</td> <td>Remove</td>
+                    </tr>
+                    {% for row in rows %}
+                    <tr>
+                        <td>
+                            <div class="product-top">
+                                <img src="{{row["img"]}}" width="80" height="80">
+                            </div>
+                            <div class="product-bottom">
+                                {{row['name']}}
+                            </div>
+                        </td>
+                    <td>
+                        {{row['product_size']}}
+                    </td>
+                    <td>
+                        {{row['count']}}
+                    </td>
+                    <td>
+                        ${{row['count']*row['price']}}
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-secondary" name="remove" value="{{row["cart_id"]}}" title="remove"><i class="fa fa-trash"></i></button>
+                    </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td><b>Total</b></td> <td></td> <td></td> <td>${{total}}</td> <td></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="column" style="text-align: left; width: 40%;">
+                <div class="form-group">
+                    <label for="firstname">Firstname</label><br>
+                    <input autocomplete="off" autofocus class="form-control" name="firstname" placeholder="Firstname" type="text" style="width: 100%;">
+                </div>
+                <div class="form-group">
+                    <label for="surname">Surname</label><br>
+                    <input autocomplete="off" autofocus class="form-control" name="surname" placeholder="Surname" type="text" style="width: 100%;">
+                </div>
+                <div class="form-group">
+                    <label for="address">Contact Number</label><br>
+                    <input autocomplete="off" autofocus class="form-control" name="contact" placeholder="Contact Number" type="text" style="width: 100%;">
+                </div>
+                <div class="form-group">
+                    <label for="delivery-method">Delivery Method</label><br>
+                    <select autofocus class="form-control" name="delivery_method" style="width: 100%;">
+                        <option value="DMNA">Select a method</option>
+                        <option value="locker">Locker Delivery</option>
+                        <option value="onsite">On Site Pickup</option>
+                        <option value="parcel">Parcel Service</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="address">Delivery Address<br>(If on-site pickup: the place you want. Eg. Tai Wo Station)</label><br>
+                    <input autocomplete="off" autofocus class="form-control" name="address" placeholder="Delivery Address" type="text" style="width: 100%;">
+                </div>
+                <div class="form-group">
+                    <label for="payment-method">Payment Method</label><br>
+                    <select autofocus class="form-control" name="payment_method" id="payment_method" style="width: 100%;">
+                        <option value="PMNA">Select a method</option>
+                        <option value="payme">Payme</option>
+                        <option value="onsite">Cash On Delivery</option>
+                    </select>
+                </div>
+                <div class="form-group hidden" id="payme">
+                    <h5>Scan Me for payme!</h5>
+                    <img src="/static/paymeSample.jpg" style="width: 50%;">
+                    <p>
+                        <b>Remarks for FPS/Payme:</b><br>
+                        Please type your fullname, contact in FPS's / Payme's Remark in the transaction.<br><br>
+                        Otherwises, we cannot reach you to verify your purchases.
+                        When you see the payment succeeded, you then submit the form by clicking <b>Purchase</b>.
+                        <b>You must click it at last!</b>
+                    </p>
+                </div>
+                <div class="form-group hidden" id="onsite">
+                    <p>
+                        <b>Remarks for on site pickup:</b><br>
+                        We will contact you soon!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+        <button class="btn btn-primary" type="submit" name="purchase" value="purchase">Purchase</button>
+    </form>
+
+    <script>
+    const sel = document.getElementById('payment_method');
+    const payme = document.getElementById('payme');
+    const onsite = document.getElementById('onsite');
+
+    sel.onchange = function(){
+        if (sel.value === "payme"){
+            payme.classList.toggle("hidden");
+            onsite.classList.toggle("hidden", true);
+        }
+
+        if (sel.value === "onsite"){
+            onsite.classList.toggle("hidden");
+            payme.classList.toggle("hidden", true);
+        }
+        if (sel.value === "PMNA"){
+            payme.classList.toggle("hidden", true);
+            onsite.classList.toggle("hidden", true);
+        }
+    };
+    </script>
+
+{% endblock %}

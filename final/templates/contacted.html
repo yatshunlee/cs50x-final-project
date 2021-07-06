@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Who Contacted Us
+{% endblock %}
+
+{% block main %}
+    <h1>See who's there</h1>
+    <br>
+    <form action="/contacted" method="post">
+    <div class="row" style="border: 1px solid grey;">
+        <div class="col-md-2 border">
+            <b>Email</b>
+        </div>
+        <div class="col-md-8 border">
+            <b>Message</b>
+        </div>
+        <div class="col-md-2 border">
+            <b>Status</b>
+        </div>
+        {% for i in rows %}
+        <div class="col-md-2 border">
+            {{i['email']}}
+        </div>
+        <div class="col-md-8 border" style="text-align: left">
+            {{i['content']}}
+        </div>
+        <div class="col-md-2 border">
+            {% if i['replyed'] == 0 %}
+            <button type="submit" class="btn btn-primary" name="replyed" value="{{i["id"]}}">Reply</button>
+            {% else %}
+            Replyed
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    </form>
+{% endblock %}

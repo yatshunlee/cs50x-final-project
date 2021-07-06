@@ -1,0 +1,60 @@
+Project title: Make Your Own Shop! By Jasper Lee
+
+In the first page:
+
+AI:(optional)
+recommendation
+chat robot
+e-commerce
+ui
+
+@isOwner:
+def isOwner(choice):
+    return choice
+
+-customer: (isOwner == F)
+    -> rendering a html with the product list: with different catergories: boots and shirts and pants
+    -> online payment with a bucket list: no. $ purchase (@login_required)
+    -> login (have)
+    -> register (have)
+    -> history (have) date items no. total (@login_required)
+    -> email confirmation (optional)
+
+-shop owner: (isOwner == T)
+    -> choosing product to sell (front end setup)
+    -> editting catergories of products
+    -> editting your name (front end)
+    -> login (have)
+    -> change pw (have)
+    -> register (have)
+//////////////////////////
+how about foodie / outfit / photo dot com
+
+-visitor:
+    view, comment, rate
+-foodie:
+    -level system
+    -post
+    -edit
+    -
+
+/////////////////////////
+
+
+
+CREATE TABLE 'users'(
+'id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+'username' TEXT NOT NULL,
+'hash' TEXT NOT NULL,
+'isAdmin' BOOL NOT NULL DEFAULT 0,
+'firstname' varchar(255),
+'surname' varchar(255),
+'contact' varchar(22)
+);
+
+
+19/12/2020
+
+contacted need "tickbox for replied msg / delete"
+
+product need delete and add item in the same page for admin use
