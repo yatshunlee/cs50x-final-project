@@ -1,6 +1,4 @@
-# cs50x-final-project
-
-## Project Title: Making a E-commerce Website
+# cs50x-final-project: Making a E-commerce Website
 
 Brief Introduction:
 I used flask to create a web server of an E-commerce website and to perform web applications like how to create dynamic content and querying the database with SQL.
