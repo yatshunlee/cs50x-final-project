@@ -1,11 +1,12 @@
 # cs50x-final-project: Making a E-commerce Website
 
 Brief Introduction:
-I used flask to create a web server of an E-commerce website and to perform web applications like how to create dynamic content and querying the database with SQL.
+
+This webpage is E-commerce website that was wrotten in Python with Flask in the back-end and able to run SQL for database query.
 For the front-end application, javascript was used to provide mini features like mathematics operations, changing photo display over time, and some popup features.
 HTML and CSS was used to create the content, layout and style of the webpages.
 
-I implemented:
+Features:
 
 login and logout:
 For users: To perform login and logout function so user can make their orders, check their bought products, store products in the wishlist...
