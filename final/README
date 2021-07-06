@@ -1,60 +1,52 @@
-Project title: Make Your Own Shop! By Jasper Lee
+### Project title: Make Your Own Shop! By Jasper Lee
 
-In the first page:
+Project Title: Making a E-commerce Website
 
-AI:(optional)
-recommendation
-chat robot
-e-commerce
-ui
+Brief Introduction:
+I used flask to create a web server of an E-commerce website and to perform web applications like how to create dynamic content and querying the database with SQL.
+For the front-end application, javascript was used to provide mini features like mathematics operations, changing photo display over time, and some popup features.
+HTML and CSS was used to create the content, layout and style of the webpages.
 
-@isOwner:
-def isOwner(choice):
-    return choice
+I implemented:
 
--customer: (isOwner == F)
-    -> rendering a html with the product list: with different catergories: boots and shirts and pants
-    -> online payment with a bucket list: no. $ purchase (@login_required)
-    -> login (have)
-    -> register (have)
-    -> history (have) date items no. total (@login_required)
-    -> email confirmation (optional)
+login and logout:
+For users: To perform login and logout function so user can make their orders, check their bought products, store products in the wishlist...
+For admin: To check orders and messages from visitor or user, and edit the prices of products
 
--shop owner: (isOwner == T)
-    -> choosing product to sell (front end setup)
-    -> editting catergories of products
-    -> editting your name (front end)
-    -> login (have)
-    -> change pw (have)
-    -> register (have)
-//////////////////////////
-how about foodie / outfit / photo dot com
+register:
+To create an account and store the password hash in the database
 
--visitor:
-    view, comment, rate
--foodie:
-    -level system
-    -post
-    -edit
-    -
+changepw:
+To change password by making request with the database
 
-/////////////////////////
+contact and contacted:
+To provide a medium for people to ask the admin/shopkeeper any question
 
+cart:
+To store the desired product, product size and quantity. To calculate the total price of the products in the shopping cart.
+To make transaction and submit the delivery information to the database.
 
+order and orders:
+To check orders and view the details of each order and changing the delivery status of the orders(For admin)
 
-CREATE TABLE 'users'(
-'id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-'username' TEXT NOT NULL,
-'hash' TEXT NOT NULL,
-'isAdmin' BOOL NOT NULL DEFAULT 0,
-'firstname' varchar(255),
-'surname' varchar(255),
-'contact' varchar(22)
-);
+history and historys:
+To check orders and view the details of each order(For users)
 
+products:
+To view the products, like the products by adding to wishlist, and add to cart by choosing the desired size and quantity.
 
-19/12/2020
+productsedit:
+To edit the price.
 
-contacted need "tickbox for replied msg / delete"
+welcome:
+To show promotions, new arrival of the products.
 
-product need delete and add item in the same page for admin use
+wish:
+To store users' favourites and provide add-to-cart function by choosing size and quantity.
+
+shop.db:
+To store user's accounts information, shopping cart(product that people want to buy), products' information,
+orders of the transaction, wishlists of every user and messages from the contact.html
+
+demo:
+https://www.youtube.com/watch?v=2b3INr1J_g0&ab_channel=YatshunLee
