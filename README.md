@@ -1,5 +1,7 @@
 # cs50x-final-project: Making a E-commerce Website
 
+youtube: https://youtu.be/2b3INr1J_g0
+
 Brief Introduction:
 
 This webpage is E-commerce website that was wrotten in Python with Flask in the back-end and able to run SQL for database query.
